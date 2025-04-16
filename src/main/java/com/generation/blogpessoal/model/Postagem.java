@@ -4,10 +4,13 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -31,7 +34,11 @@ public class Postagem {
 	private String texto;
 	
 	@UpdateTimestamp
-	private LocalDate data; //atualia o tempo sosinho
+	private LocalDate data; //atualiza o tempo sosinho
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem") //para nao entrar em loop com a repeticao de dados no retorno
+	private Tema tema;
 	
 	
 	
@@ -58,6 +65,12 @@ public class Postagem {
 	}
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 	
 	
