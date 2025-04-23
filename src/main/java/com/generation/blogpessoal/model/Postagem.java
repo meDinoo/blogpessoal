@@ -1,6 +1,7 @@
 package com.generation.blogpessoal.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -24,23 +25,25 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // entende que e uma chave primaria e faz o auto incremento
 	
-	@NotBlank
+	@NotBlank(message = "O atributo título é Obrigatório!") 
 	@Size(min = 3 , max = 100 )
 	private String titulo;//nao pode ser menor que 3 ou maior que 100, e nao pode ser null ou vazio
 	
 	
-	@NotBlank
+	@NotBlank(message = "O atributo texto é Obrigatório!")
 	@Size(min = 10 , max = 1000 )
 	private String texto;
 	
 	@UpdateTimestamp
-	private LocalDate data; //atualiza o tempo sosinho
+	private LocalDateTime data; //atualiza o tempo sosinho
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem") //para nao entrar em loop com a repeticao de dados no retorno
 	private Tema tema;
 	
-	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 	
 	public Long getId() {
 		return id;
@@ -60,10 +63,11 @@ public class Postagem {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-	public LocalDate getData() {
+	
+	public LocalDateTime getData() {
 		return data;
 	}
-	public void setData(LocalDate data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	public Tema getTema() {
@@ -71,6 +75,12 @@ public class Postagem {
 	}
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
