@@ -25,6 +25,22 @@ public class JwtService {
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 
+	
+		/*
+			  private Key getSignKey() {
+			byte[] keyBytes = Decoders.Decoders.HEX.decode(SECRET);
+			return Keys.hmacShaKeyFor(keyBytes);
+		}
+		
+		\\\\\\\\\\\//////////////
+		
+		private Key getSignKey() {
+		byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+		return Keys.hmacShaKeyFor(keyBytes);
+		
+	*/
+	
+	
 	private Claims extractAllClaims(String token) {
 		return Jwts.parserBuilder()
 				.setSigningKey(getSignKey()).build()
