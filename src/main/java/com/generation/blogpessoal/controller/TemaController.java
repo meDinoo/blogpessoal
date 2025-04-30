@@ -40,7 +40,7 @@ public class TemaController {
         this.blogpessoalApplication = blogpessoalApplication;
     }
 	
-	@GetMapping // verbo get, mapping seria indicando o caminho, no caso por ser o primeiro n preciso 
+	@GetMapping 
 	public ResponseEntity<List<Tema>> getAll(){
 		return ResponseEntity.ok(temaRepository.findAll());
 	}
