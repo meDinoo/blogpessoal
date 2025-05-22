@@ -1,6 +1,5 @@
 package com.generation.blogpessoal.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -77,6 +76,8 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
+	
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}

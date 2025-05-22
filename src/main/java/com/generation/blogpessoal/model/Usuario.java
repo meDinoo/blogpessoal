@@ -30,7 +30,7 @@ public class Usuario {
 	private String nome;
 
 	@Schema(example = "email@email.com.br")
-	@NotNull(message = "O Atributo Usuário é Obrigatório!")
+	@NotBlank(message = "O Atributo Usuário é Obrigatório!")
 	@Email(message = "O Atributo Usuário deve ser um email válido!")
 	private String usuario;
 
@@ -45,7 +45,6 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
-	
 	
 	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
 		this.id = id;

@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.blogpessoal.BlogpessoalApplication;
-import com.generation.blogpessoal.model.Postagem;
 import com.generation.blogpessoal.model.Tema;
 import com.generation.blogpessoal.repository.TemaRpository;
 
@@ -30,15 +28,12 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 
-    private final BlogpessoalApplication blogpessoalApplication;
+    
 
     
 	@Autowired
 	private TemaRpository temaRepository;
 
-    TemaController(BlogpessoalApplication blogpessoalApplication) {
-        this.blogpessoalApplication = blogpessoalApplication;
-    }
 	
 	@GetMapping 
 	public ResponseEntity<List<Tema>> getAll(){
